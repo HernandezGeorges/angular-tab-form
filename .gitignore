@@ -1,0 +1,8 @@
+# Raw scripts
+build
+
+# Dependency directories
+node_modules
+bower_components
+
+*.log

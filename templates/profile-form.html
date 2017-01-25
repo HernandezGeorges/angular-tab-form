@@ -1,0 +1,95 @@
+<div ng-controller="profileCtrl as profile">
+
+    <div class="message message--validated" ng-show="profile.f.formerror||profile.f.formvalid">
+        <div ng-class="{true:'text--valid', false:'text--error'}[profile.f.validated]">{{profile.f.message}}</div>
+    </div>
+
+    <form class="form form--wrapper form--profile" name="userForm" novalidate role="form">
+
+        <div class="uploader uploader--profile">
+            <output id="uploader__output--profile" class="uploader__output">
+                <img ng-src="{{croppedAvatar}}" />
+            </output>
+
+            <div class="uploader-fields  uploader-fields--profile">
+                <span class="uploader-fields__label">{{user.tabs.profile.uploader_label}}</span>
+                <label class="uploader-fields__label--input-wrapper">
+                    {{user.tabs.profile.uploader_button_text}} <input type="file" id="uploader-fields__input--profile" class="uploader-fields__input" image-cropper />
+                </label>
+                <span class="uploader-fields__caption">{{user.tabs.profile.uploader_caption}}</span>
+            </div>
+        </div>
+
+        <div class="cropAreaAvatar">
+            <img-crop image="imageAvatar" result-image="croppedAvatar" area-type="circle" result-image-size="130" ></img-crop>
+        </div>
+
+        <!-- {{ profile.f.formerror.civilite | debug }} -->
+
+        <div class="form-group form-group--civilite">
+            <label for="civilite">Civilité *</label>
+            <span class="label label-danger" id="civilite-error" data-ng-show="profile.f.submitted && profile.f.formerror.civilite.$error.required">Obligatoire</span>
+            <div class="form-control civilite__select" id="block_civilite"><!-- initially a select -->
+                <label class="select--toggler"></label>
+                <div class="civilite__select--data">
+                    <label>
+                        <input type="radio" data-ng-model="civilite" name="civilite" class="civilite__radio" value="M" required />M
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="civilite" name="civilite" class="civilite__radio" value="Mme" required />Mme
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group form-group--prenom">
+            <label for="prenom">Prénom *</label>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.prenom.$error.required">Obligatoire</span>
+            <input class="form-control prenom__input" type="text" id="prenom" name="prenom" data-ng-model="prenom"  required />
+        </div>
+
+        <div class="form-group form-group--nom">
+            <label for="nom">Nom *</label>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.nom.$error.required">Obligatoire</span>
+            <input class="form-control nom__input" type="text" id="nom" name="nom" data-ng-model="nom" required />
+        </div>
+
+        <div class="form-group form-group--telephone">
+            <label for="telephone">Telephone *</label>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.telephone.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.telephone.$error.pattern">Numéro Invalide</span>
+            <input class="form-control telephone__input" type="tel" id="telephone" name="telephone" data-ng-model="telephone" data-ng-pattern='/^(\+\d{1,3}[- ]?)?\d{10,}$/' placeholder="+33 0" required />
+        </div>
+
+        <div class="form-group form-group--email">
+            <label for="email">Email *</label>
+            <input class="form-control email__input" type="email" id="email" name="email" data-ng-model="email" placeholder="your@email.com" value="your@email.com" disabled />
+        </div>
+
+        <div class="form-group form-group--passOld">
+            <label for="passwordOld">Ancien mot de passe *</label>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.passwordOld.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.$error.passwordOld">Mot de passe invalide</span>
+            <input class="form-control password__input--old" type="password"  name="passwordOld" id="passwordOld" data-ng-model="passwordOld" required />
+        </div>
+
+        <div class="form-group form-group--passwordNew">
+            <label for="passwordNew">Nouveau mot de passe *</label>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.passwordNew.$error.required">Obligatoire</span>
+            <input class="form-control password__input--new" type="password"  name="passwordNew" id="passwordNew" data-ng-model="passwordNew" required />
+        </div>
+
+        <div class="form-group form-group--passwordConf">
+            <label for="passwordConf">Confirmation du mot de passe *</label>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.passwordConf.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="profile.f.submitted && profile.f.formerror.passwordConf.$error.passwordVerify">Doit être identique au champ précédent</span>
+            <input class="form-control password__input--conf" type="password"  name="passwordConf" id="passwordConf" data-ng-model="passwordConf" data-password-verify="passwordNew" required />
+        </div>
+
+        <div class="form-group form-group--validation">
+            <button data-ng-click="profile.submit( userForm )" class="validation__button validation__button--userForm">Mettre à jour</button>
+        </div>
+
+    </form>
+
+</div>

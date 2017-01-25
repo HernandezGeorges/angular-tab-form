@@ -1,0 +1,40 @@
+{
+  "name": "angular-tab-form",
+  "version": "0.0.1",
+  "description": "Angular Tab Form",
+  "keywords": [
+    "tab",
+    "form",
+    "javascript",
+    "angular",
+    "bootstrap"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev2gh/angular-tab-form.git"
+  },
+  "homepage": "https://dev2gh.github.io/angular-tab-form/",
+  "author": "Hernandez Georges",
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap-sass": "~3.3.7"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-concat": "^2.5.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/dev2gh/angular-tab-form/issues"
+  },
+  "main": "index.html"
+}
