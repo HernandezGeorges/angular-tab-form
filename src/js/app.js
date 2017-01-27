@@ -14,24 +14,40 @@
         $stateProvider
         .state( 'profile', {
             url: '/profile',
-            templateUrl: 'templates/profile-form.html'
+            templateUrl: 'templates/profile-form.html',
         })
 
-        // billing form state
+        // invoicing form state
         .state( 'invoicing', {
             url: '/invoicing',
-            templateUrl: 'templates/billing-form.html'
+            templateUrl: 'templates/invoicing-form.html',
         })
 
-        // agency form state
+        // branch form state
         .state('branch', {
             url: '/branch',
-            templateUrl: 'templates/agency-form.html',
+            templateUrl: 'templates/branch-form.html',
         });
 
         // set the default activated tab with the first state
         $urlRouterProvider.otherwise('/profile');
 
+    }])
+
+    .run([ '$rootScope', '$state',
+    function ( $rootScope, $state ) {
+
+        // a bit of control in case we want the forms to be filled one after the other
+        $rootScope.$on('$stateChangeStart', function( e, toState, fromState ) {
+            if( toState.name === 'invoicing' && $rootScope.transitionTo.invoicing === false ) {
+                e.preventDefault();
+                $state.go( 'profile', { notify: false } );
+            }
+            if( toState.name === 'branch' && $rootScope.transitionTo.branch === false ) {
+                e.preventDefault();
+                $state.go( 'invoicing', { notify: false } );
+            }
+        });
     }])
 
     .filter( 'debug', function() {

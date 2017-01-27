@@ -40,7 +40,7 @@
                         scope.$apply(function( scope ){
                             if( scope.profile )
                                 scope.imageAvatar = evt.target.result;
-                            if( scope.agency )
+                            if( scope.branch )
                                 scope.imageLogo = evt.target.result;
                         });
                     };

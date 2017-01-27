@@ -65,7 +65,7 @@ gulp.task('custom-styles', function () {
         'last 2 versions',
         '> 5%'
     ))
-    .pipe( gulp.dest( styleDest ) )
+    // .pipe( gulp.dest( styleDest ) )
     .pipe( rename({
         suffix: ".min"
     }))

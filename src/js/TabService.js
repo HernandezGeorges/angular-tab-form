@@ -21,11 +21,11 @@
                 uploader_caption: ''
             };
 
-        this.tabs.billing = {
+        this.tabs.invoicing = {
                 title: 'invoicing'
             };
 
-        this.tabs.agency = {
+        this.tabs.branch = {
             title: 'branch',
             uploader_label: 'Votre logo',
             uploader_button_text: 'Charger un logo',

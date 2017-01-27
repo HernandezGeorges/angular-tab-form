@@ -1,0 +1,57 @@
+<div ng-controller="branchCtrl as branch">
+
+    <div class="message message--validated" ng-show="branch.f.formerror||branch.f.formvalid">
+        <div ng-class="{true:'text--valid', false:'text--error'}[branch.f.validated]">{{branch.f.message}}</div>
+    </div>
+
+    <form class="form form--wrapper form--branch" name="branchForm" novalidate role="form">
+
+        <div class="uploader uploader--branch">
+            <output id="uploader__output--branch" class="uploader__output">
+                <img ng-src="{{croppedLogo}}" />
+            </output>
+
+            <div class="uploader-fields  uploader-fields--branch">
+                <span class="uploader-fields__label">{{user.tabs.branch.uploader_label}}</span>
+                <label class="uploader-fields__label--input-wrapper">
+                    {{user.tabs.branch.uploader_button_text}} <input type="file" id="uploader-fields__input--branch" class="uploader-fields__input" image-cropper />
+                </label>
+                <span class="uploader-fields__caption">{{user.tabs.branch.uploader_caption}}</span>
+            </div>
+        </div>
+
+        <div class="cropAreaLogo">
+            <img-crop image="imageLogo" result-image="croppedLogo" area-type="circle" result-image-size="90" ></img-crop>
+        </div>
+
+        <div class="form-group form-group--branch">
+            <label for="email_name">Nom commercial de l'entreprise</label>
+            <input class="form-control branch__input" type="text" id="email_name" name="email_name" data-ng-model="email_name" />
+        </div>
+
+        <div class="form-group form-group--url">
+            <label for="url">Url de votre site</label>
+            <input class="form-control url__input" type="url" id="url" name="url" data-ng-model="url" placeholder="http://" />
+        </div>
+
+        <div class="form-group form-group--telephone_branch">
+            <label for="telephone_branch">Telephone *</label>
+            <span class="label label-danger" data-ng-show="branch.f.submitted && branch.f.formerror.telephone_branch.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="branch.f.submitted && branch.f.formerror.telephone_branch.$error.pattern">Numéro Invalide</span>
+            <input class="form-control telephone__input" type="tel" id="telephone_branch" name="telephone_branch" data-ng-model="telephone_branch" data-ng-pattern="/^(\+\d{1,3}[- ]?)?\d{10,}$/" placeholder="+33 0" required />
+        </div>
+
+        <div class="form-group form-group--email_branch">
+            <label for="email_branch">Email </label>
+            <!-- email not required but in order to show the validation from pattern, put both -->
+            <span class="label label-danger" data-ng-show="branch.f.submitted && branch.f.formerror.email_branch.$error.required"></span>
+            <span class="label label-danger" data-ng-show="branch.f.submitted && branch.f.formerror.email_branch.$error.pattern">Email invalide</span>
+            <input class="form-control email_branch__input" type="email" id="email_branch" name="email_branch" data-ng-model="email_branch" data-ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" />
+        </div>
+
+        <div class="form-group form-group--validation">
+            <button data-ng-click="branch.submit( branchForm )" class="validation__button validation__button--branchForm">Mettre à jour</button>
+        </div>
+
+    </form>
+</div>
