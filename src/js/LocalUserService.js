@@ -4,8 +4,7 @@
 (function() {
     'use strict';
 
-    angular.module('userInfos')
-    .service('LocalUserInfosService', function($q){
+    var LocalUserService = function($q){
 
         var STORAGE_ID = 'angular-tab-form';
 
@@ -56,6 +55,11 @@
             return $q.when( this._saveToLocalStorage( this.collection ) );
         };
 
-    });
+    };
+
+
+    angular
+        .module( 'userInfos' )
+        .service( 'LocalUserService', LocalUserService );
 
 })();

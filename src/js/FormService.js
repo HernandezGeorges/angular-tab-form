@@ -6,9 +6,7 @@
 (function() {
     'use strict';
 
-    angular.module( 'userInfos' )
-
-    .factory( 'FormService', function() {
+    var FormService = function() {
 
         return {
 
@@ -19,12 +17,12 @@
 
                 if( tabform.$invalid ) {
                     this.formerror = tabform;
-                    this.message = 'Désolé, Quelques erreurs se sont glissées dans le formulaire!';
+                    this.message = 'Erreur';
 
                 } else {
                     this.validated = true;
                     this.formvalid = tabform;
-                    this.message = 'Votre mise à jour a bien été enregistrée!';
+                    this.message = 'ok';
                 }
 
                 return this;
@@ -32,5 +30,10 @@
             }
         };
 
-    });
+    };
+
+    angular
+        .module( 'userInfos' )
+        .factory( 'FormService', FormService );
+
 })();

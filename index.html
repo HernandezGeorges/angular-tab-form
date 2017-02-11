@@ -10,24 +10,26 @@
         <title>Angular Tab Form</title>
     </head>
 
-    <body data-ng-app="userInfos">
+    <body data-ng-app="userInfos" data-ng-controller="userInfosCtrl as user" class="{{currentPage}}">
 
-        <head-nav></head-nav>
+        <head-nav class="navigation"></head-nav>
 
-        <div class="container-fluid tabset--container" data-ng-controller="userInfosCtrl as user">
+        <div class="container-fluid tabset--container">
 
-            <page-tabset></page-tabset>
+            <page-tabset class="tabulation"></page-tabset>
 
             <div class="tabset-views container" ui-view style="z-index: 0;"></div>
 
         </div>
+
+
 
         <script src="src/js/select-customizer.js"></script>
         <script src="src/js/vendors.min.js"></script>
         <script src="src/js/app.js"></script>
         <script src="src/js/TabService.js"></script>
         <script src="src/js/FormService.js"></script>
-        <script src="src/js/UserInfosService.js"></script>
+        <script src="src/js/LocalUserService.js"></script>
         <script src="src/js/controller.js"></script>
         <script src="src/js/directives.js"></script>
 
