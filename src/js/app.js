@@ -50,6 +50,10 @@
 
         $rootScope.$on('$stateChangeStart', function( e, toState, fromState ) {
 
+            /*
+            This helps prevent "$state.current is sometimes 'empty'"
+            as seen here: https://github.com/angular-ui/ui-router/issues/1627
+             */
             $rootScope.currentPage = toState.name;
 
             /*
